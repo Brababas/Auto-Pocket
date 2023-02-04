@@ -218,12 +218,12 @@ cli_delete_after = config.get(general_settings, 'cli_delete_after')
 #Get keys
 consumer_key, request_key, access_key = __init__()
 
-if args.url is not None:
+if args.url is not None: # Using CLI
 	tags = auto_pocket_tag + ', ' + cli_tag
 	status_code = cli_add_article(args.url, consumer_key, access_key, tags)
 	print(status_code)
 
-else:
+else: # Not using CLI
 	status_code, ret_data = ret_all_articles(consumer_key, access_key, cli_tag)
 	delete_article_check(ret_data, cli_delete_after)	
 
